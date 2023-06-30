@@ -10,7 +10,7 @@ use App\Models\Jobworker;
 // avec toute les methodes qui permette d'ajouter de voir la liste des jobworker
 // et la suppression du jobworker avec la redirection vers les vues associés
 
-class InscriptionController extends Controller
+class InscriptionjobworkerController extends Controller
 {
     public function frmInscription()
     {
