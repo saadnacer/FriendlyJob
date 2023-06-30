@@ -61,6 +61,7 @@
                             </ul>
                         </div>
                     </div>
+                    <li><a href="/inscription/listejobworker">Admin</a></li>
                     <li>
                         <a class="hover:text-gray-500" href="#">A propos</a>
                     </li>
