@@ -21,7 +21,7 @@ class InscriptionjobworkerController extends Controller
     public function ajoutjobworker(FormJobworkerRequest $request)
     {
         // enregistrer la categorie en BDD
-        $jobworker = \App\Models\jobworker::create([
+        $jobworker = \App\Models\Jobworker::create([
             'nom' => request('nom'),
             'prenom' => request('prenom'),
             'email' => request('email'),
@@ -41,11 +41,11 @@ class InscriptionjobworkerController extends Controller
     }
     public function listejobworker()
     {
-        $jobworker = \App\Models\jobworker::all();
+        $jobworker = \App\Models\Jobworker::all();
 
         return view('inscription.listejobworker', ['jobworker' => $jobworker]);
     }
-    public function delete(\App\Models\jobworker $jobworker)
+    public function delete(\App\Models\Jobworker $jobworker)
     {
         $jobworker->delete();
         $message = "la suppression du jobworker {$jobworker->prenom} a etait faite";

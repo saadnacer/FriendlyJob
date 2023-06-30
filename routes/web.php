@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('/friendlyuser')
-        ->name('friendlyuser.')
-        ->controller(App\Http\Controllers\FriendlyuserController::class)
-        ->group(function() {
-            Route::get ('/ajouter','frmFriendlyuser')->name('frm');
-            Route::post('/ajouter','addFridenlyuser')->name('add');
-});
+    ->name('friendlyuser.')
+    ->controller(App\Http\Controllers\FriendlyuserController::class)
+    ->group(function () {
+        Route::get('/ajouter', 'frmFriendlyuser')->name('frm');
+        Route::post('/ajouter', 'addFridenlyuser')->name('add');
+    });
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,7 +33,7 @@ Route::get('/accueil', function () {
 
 Route::prefix('/inscription')
     ->name('inscription.')
-    ->controller(App\Http\Controllers\InscriptionController::class)
+    ->controller(App\Http\Controllers\InscriptionjobworkerController::class)
     ->group(function () {
         Route::get('', 'frmInscription')->name('frm');
         Route::get('/listejobworker', 'listejobworker')->name('all');
@@ -42,12 +42,12 @@ Route::prefix('/inscription')
     });
 
 
-    Route::prefix('/connexion')
-        ->name('connexion.')
-        ->controller(App\Http\Controllers\ConnexionController::class)
-        ->group(function() {
-            Route::get ('/connexion','friendlyConnexion')->name('frc');
-            Route::post('/connexion','friendlyConnexion')->name('fcc');
-            Route::get ('/connexion','workerConnexion')->name('wrc');
-            Route::post('/connexion','workerConnexion')->name('wcc');    
-        });
+Route::prefix('/connexion')
+    ->name('connexion.')
+    ->controller(App\Http\Controllers\ConnexionController::class)
+    ->group(function () {
+        Route::get('/connexion', 'friendlyConnexion')->name('frc');
+        Route::post('/connexion', 'friendlyConnexion')->name('fcc');
+        Route::get('/connexion', 'workerConnexion')->name('wrc');
+        Route::post('/connexion', 'workerConnexion')->name('wcc');
+    });
