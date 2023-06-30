@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 // ajout du model(a peu pres comme une classe metier)du jobworker pour recuperer les données de la base de données
 // et pouvoir les manipuler dans notre environnement
 
-class jobworker extends Model
+class Jobworker extends Model
 {
     use HasFactory;
 
