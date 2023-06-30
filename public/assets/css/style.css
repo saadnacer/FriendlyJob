@@ -4,3 +4,6 @@
 .dropdown:hover .dropdown-menu {
     display: block;
   }
+.custom-height {
+    width: 650px;
+  }
