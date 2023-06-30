@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title','Accueil')
+@section('title', 'FriendlyJob')
 
 @section('content')
 <div class="flex items-center justify-center h-screen">
