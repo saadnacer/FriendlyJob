@@ -13,9 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',function () { return view('welcome'); });
-Route::get('/accueil', function () { return view('accueil'); });
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/accueil', function () {
+    return view('accueil');
+});
 
-//coucou
+// groupe route de l'inscription du jobworker avec la liste des jobworker 
+// la possibilité de supprimer des jobworkers
 
-
+Route::prefix('/inscription')
+    ->name('inscription.')
+    ->controller(App\Http\Controllers\InscriptionController::class)
+    ->group(function () {
+        Route::get('', 'frmInscription')->name('frm');
+        Route::get('/listejobworker', 'listejobworker')->name('all');
+        Route::delete('/delete/{jobworker}', 'delete')->name('delete');
+        Route::post('/ajouter', 'ajoutjobworker')->name('add');
+    });
