@@ -53,7 +53,7 @@
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
                           </button>
                           <ul class="dropdown-menu rounded absolute hidden text-white pt-1 bg-black">
-                            <li class=""><a class="font-semibold rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/jobworker/ajouter">Prestataire</a></li>
+                            <li class=""><a class="font-semibold rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/inscription/">Prestataire</a></li>
                             <li class=""><a class="font-semibold hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/friendlyuser/ajouter">Client</a></li>
                           </ul>
                         </div>
