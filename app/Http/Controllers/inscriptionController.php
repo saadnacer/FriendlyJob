@@ -14,7 +14,7 @@ class InscriptionController extends Controller
 {
     public function frmInscription()
     {
-        return view('inscription');
+        return view('inscription.inscriptionworker');
     }
 
 
@@ -43,7 +43,7 @@ class InscriptionController extends Controller
     {
         $jobworker = \App\Models\jobworker::all();
 
-        return view('listejobworker', ['jobworker' => $jobworker]);
+        return view('inscription.listejobworker', ['jobworker' => $jobworker]);
     }
     public function delete(\App\Models\jobworker $jobworker)
     {

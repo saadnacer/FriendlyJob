@@ -9,9 +9,8 @@
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -28,34 +27,38 @@
                     </li>
                     <div class="p-0">
                         <div class="dropdown inline-block relative">
-                          <a href="/service/list" class="dropdown inline-block relative">
-                            <button class="py-2 px-2 rounded inline-flex items-center">
-                              <span class="mr-1">Services</span>
-                              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                            </button>
-                            <ul class="dropdown-menu rounded absolute hidden text-black-500 pt-1 bg-black">
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Aide a la personne</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Covoiturage</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Demenagement</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Garde d'animaux</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Jardinage</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Bricolage</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Informatique</a></li>
-                              <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Babysitting</a></li>
-                            </ul>
-                          </a>
+                            <a href="/service/list" class="dropdown inline-block relative">
+                                <button class="py-2 px-2 rounded inline-flex items-center">
+                                    <span class="mr-1">Services</span>
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu rounded absolute hidden text-black-500 pt-1 bg-black">
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Aide a la personne</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Covoiturage</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Demenagement</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Garde d'animaux</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Jardinage</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Bricolage</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Informatique</a></li>
+                                    <li><a class="rounded-t text-white font-semibold hover:bg-gray-400 py-1 px-4 block whitespace-no-wrap" href="#">Babysitting</a></li>
+                                </ul>
+                            </a>
                         </div>
                     </div>
                     <div class="p-0">
                         <div class="dropdown inline-block relative">
-                          <button class="py-2 px-4 rounded inline-flex items-center">
-                            <span class="mr-1">Nous rejoindre</span>
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
-                          </button>
-                          <ul class="dropdown-menu rounded absolute hidden text-white pt-1 bg-black">
-                            <li class=""><a class="font-semibold rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/inscription/">Prestataire</a></li>
-                            <li class=""><a class="font-semibold hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/friendlyuser/ajouter">Client</a></li>
-                          </ul>
+                            <button class="py-2 px-4 rounded inline-flex items-center">
+                                <span class="mr-1">Nous rejoindre</span>
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu rounded absolute hidden text-white pt-1 bg-black">
+                                <li class=""><a class="font-semibold rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/inscription/">Prestataire</a></li>
+                                <li class=""><a class="font-semibold hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/friendlyuser/ajouter">Client</a></li>
+                            </ul>
                         </div>
                     </div>
                     <li>
@@ -73,15 +76,15 @@
         </nav>
     </header>
     <section class="h-screen">
-        @yield('content') 
+        @yield('content')
     </section>
     <footer class="fixed bottom-0 left-0 right-0 w-full mt-5">
-      <div class="flex justify-center items-center h-16 bg-black text-white shadow">
-          <p>Cpyright</p>
-      </div>
-  </footer>
-  
-    
+        <div class="flex justify-center items-center h-16 bg-black text-white shadow">
+            <p>Cpyright</p>
+        </div>
+    </footer>
+
+
     <script src="/assets/js/burgermenu.js"></script>
     <script src="/assets/js/slider.js"></script>
 </body>
