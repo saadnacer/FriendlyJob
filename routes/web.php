@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('/friendlyuser')
+        ->name('friendlyuser.')
+        ->controller(App\Http\Controllers\FriendlyuserController::class)
+        ->group(function() {
+            Route::get ('/ajouter','frmFriendlyuser')->name('frm');
+            Route::post('/ajouter','addFridenlyuser')->name('add');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
