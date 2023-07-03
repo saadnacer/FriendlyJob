@@ -19,15 +19,20 @@ Route::prefix('/friendlyuser')
     ->group(function () {
         Route::get('/ajouter', 'frmFriendlyuser')->name('frm');
         Route::post('/ajouter', 'addFridenlyuser')->name('add');
-});
+    });
+
+// route pour la partit service 
+
 Route::prefix('/service')
     ->name('service.')
     ->controller(App\Http\Controllers\serviceController::class)
     ->group(function () {
-        Route::get('/service', 'AllServices');
-});
+        Route::get('/service', 'AllServices')->name('all');
+        Route::get('/service/ajout', 'ajoutservice')->name('add');
+    });
 
 
+// route pour l'accueil 
 
 Route::get('/', function () {
     return view('welcome');
