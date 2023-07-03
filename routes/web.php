@@ -29,7 +29,7 @@ Route::prefix('/service')
     ->group(function () {
         Route::get('/service', 'AllServices')->name('all');
         Route::get('/ajout', 'frmService')->name('all');
-        Route::post('/service/ajout', 'ajoutServices')->name('add');
+        Route::post('/ajout', 'ajoutServices')->name('add');
     });
 
 
