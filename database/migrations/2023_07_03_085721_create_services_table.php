@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id_services');
             $table->string('libelle');
-            $table->string('prix');
             $table->string('description');
+            $table->string('prix');
             $table->timestamps();
         });
     }
