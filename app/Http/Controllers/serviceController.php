@@ -8,7 +8,9 @@ class ServiceController extends Controller
 {
     public function AllServices()
     {
-        return view('service.service');
+        $services = \App\Models\Service::all();
+            
+        return view('categorie.listerservice',['services'=> $services]);
     }
     public function ajoutServices(FormServiceRequest $request)
     {
