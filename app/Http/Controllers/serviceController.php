@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Service;
+use App\Http\Requests\FormServiceRequest;
 
 class ServiceController extends Controller
 {
     public function AllServices()
     {
         $services = \App\Models\Service::all();
-            
-        return view('categorie.listerservice',['services'=> $services]);
+
+        return view('categorie.listerservice', ['services' => $services]);
     }
     public function ajoutServices(FormServiceRequest $request)
     {

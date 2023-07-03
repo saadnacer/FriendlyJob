@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 // pour l'inscription du jobworker
 
 
-class FormJobworkerRequest extends FormRequest
+class FormServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
