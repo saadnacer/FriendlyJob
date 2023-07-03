@@ -46,21 +46,23 @@
             </div>
         </div>
         <div class="flex-1 shadow p-4">
+            @foreach ($services as $service)  
             <div class="max-w-sm rounded overflow-hidden shadow-lg bg-gradient-to-b from-gray-200 to-gray-300">
                 <img class="w-full" src="image-du-produit.jpg" alt="Image du produit">
                 <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Nom du service</div>
+                    <div class="font-bold text-xl mb-2">{{ $service->libelle }} </div>
                     <p class="text-gray-700 text-base">
-                        Description du produit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus libero ut tincidunt vestibulum.
+                        {{ $service->description }}
                     </p>
-                    <p class="text-gray-900 font-bold text-xl mt-2">$99.99</p> <!-- Prix du produit -->
-                    <p class="text-gray-600 text-sm mt-2">Prestataire: John Doe</p> <!-- Nom du prestataire -->
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">Demande</button> <!-- Bouton Demande -->
+                    <p class="text-gray-900 font-bold text-xl mt-2">Prix :{{ $service->prix }}</p> 
+                    <p class="text-gray-600 text-sm mt-2">Prestataire: John Doe</p> 
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">Demande</button> 
                 </div>
                 <div class="px-6 py-4">
-                    <span class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Catégorie 1</span>
+                    <span class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ $service->prix }}</span>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 @endsection
