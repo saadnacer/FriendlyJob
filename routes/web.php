@@ -28,7 +28,7 @@ Route::prefix('/service')
     ->controller(App\Http\Controllers\serviceController::class)
     ->group(function () {
         Route::get('/service', 'AllServices')->name('all');
-        Route::get('/ajout', 'frmService')->name('all');
+        Route::get('/ajout', 'frmService')->name('frm');
         Route::post('/ajout', 'ajoutServices')->name('add');
     });
 

@@ -8,7 +8,7 @@
         <!-- <img class="flex-1 w-full h-full md:h-full object-cover" src="assets/img/logo/logo.png" alt=""> -->
         <div class="p-4 flex-1 md:flex md:flex-col justify-center">
             <h2 class="text-2xl font-bold text-gray-800 mb-2">ajoute ton service</h2>
-            <form action="/service/service/ajout" method="post">
+            <form action="/service/ajout" method="post">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-600" for="libelle">libelle</label>
