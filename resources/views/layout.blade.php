@@ -27,7 +27,7 @@
                     </li>
                     <div class="p-0">
                         <div class="dropdown inline-block relative">
-                            <a href="/service/list" class="dropdown inline-block relative">
+                            <a href="/service/service" class="dropdown inline-block relative">
                                 <button class="py-2 px-2 rounded inline-flex items-center">
                                     <span class="mr-1">Services</span>
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
