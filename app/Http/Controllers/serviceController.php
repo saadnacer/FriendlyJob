@@ -12,7 +12,7 @@ class ServiceController extends Controller
     {
         $services = \App\Models\Service::all();
 
-        return view('categorie.listerservice', ['services' => $services]);
+        return view('service.service', ['services' => $services]);
     }
     public function ajoutServices(FormServiceRequest $request)
     {

@@ -25,10 +25,10 @@ Route::prefix('/friendlyuser')
 
 Route::prefix('/service')
     ->name('service.')
-    ->controller(App\Http\Controllers\serviceController::class)
+    ->controller(App\Http\Controllers\ServiceController::class)
     ->group(function () {
         Route::get('/service', 'AllServices')->name('all');
-        Route::post('/service/ajout', 'ajoutServices')->name('add');
+        Route::post('/ajout', 'ajoutServices')->name('add');
     });
 
 
