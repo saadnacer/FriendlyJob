@@ -22,17 +22,17 @@ class ServiceController extends Controller
     public function ajoutServices(FormServiceRequest $request)
     {
         // enregistrer la categorie en BDD
-        $service = \App\Models\Service::create([
+        $services = \App\Models\Service::create([
             'id_service' => request('id'),
             'libelle' => request('libelle'),
-            'prix' => request('prix'),
             'description' => request('description'),
+            'prix' => request('prix'),
 
         ]);
-        $service->save();
+        $services->save();
 
-        $message = 'votre service est enregistrer : ' . $service->nom . ' ' . $service->prenom
-            . ' ' . $service->activite;
+        $message = 'votre service est enregistrer : '
+            . ' ' . $services->activite;
 
 
         return redirect()->route('service.all')->with('success', $message);
