@@ -13,28 +13,31 @@ class ServiceController extends Controller
     {
         return view('service.ajoutservice');
     }
-    public function AllServices()
-    {
-        $services = \App\Models\Service::all();
 
-        return view('service.service', ['services' => $services]);
-    }
-    public function ajoutServices(FormServiceRequest $request)
+
+    public function ajoutServices()
     {
         // enregistrer la categorie en BDD
-        $services = \App\Models\Service::create([
-            'id_service' => request('id'),
+        $service = \App\Models\Service::create([
             'libelle' => request('libelle'),
             'description' => request('description'),
-            'prix' => request('prix'),
-
+            'prix' => request('prix')
+            
         ]);
-        $services->save();
-
+        $service->save();
+        
         $message = 'votre service est enregistrer : '
-            . ' ' . $services->activite;
+        . ' ' . $service->libelle;
+        
+        
+        return redirect()->route('service.add')->with('success', $message);
+    }
 
 
-        return redirect()->route('service.all')->with('success', $message);
+    public function allServices()
+    {
+        $service = \App\Models\Service::all();
+
+        return view('service.service', ['services' => $service]);
     }
 }
