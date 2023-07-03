@@ -8,6 +8,11 @@ use App\Http\Requests\FormServiceRequest;
 
 class ServiceController extends Controller
 {
+
+    public function frmService()
+    {
+        return view('service.ajoutservice');
+    }
     public function AllServices()
     {
         $services = \App\Models\Service::all();
