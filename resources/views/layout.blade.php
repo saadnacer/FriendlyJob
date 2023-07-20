@@ -61,17 +61,29 @@
                             </ul>
                         </div>
                     </div>
-                    <li><a href="/inscription/listejobworker">Admin</a></li>
-                    <li>
-                        <a class="hover:text-gray-500" href="#">A propos</a>
+                    <!-- <li><a href="/inscription/listejobworker">Admin</a></li>
+                    <li> -->
+                    <a class="hover:text-gray-500" href="#">A propos</a>
                     </li>
                     <li>
-                        <a class="hover:text-gray-500" href="#">Contact</a>
+                        <a class="hover:text-gray-500" href="/contact">Contact</a>
                     </li>
+                    @auth
+                    <li>
+                        <a class="hover:text-gray-500" href="/connexion/profil">Mon profil</a>
+                    </li>
+                    @endauth
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <button class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Sign in</button>
+                @if(auth()->check())
+                <form action="{{ route('connexion.deconnexion') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Déconnexion</button>
+                </form>
+                @else
+                <a href="/connexion/worker" class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Connexion</a>
+                @endif
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
         </nav>
@@ -80,8 +92,9 @@
         @yield('content')
     </section>
     <footer class="fixed bottom-0 left-0 right-0 w-full mt-5">
-        <div class="flex justify-center items-center h-16 bg-black text-white shadow">
-            <p>Cpyright</p>
+        <div class="flex justify-center items-center h-16 bg-white text-black shadow">
+            <p>
+                Friendlyjob © 2023</p>
         </div>
     </footer>
 

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +26,13 @@ Route::prefix('/friendlyuser')
 
 // route pour la partit service 
 
-Route::prefix('/service')
+Route::middleware(['web', 'auth'])->prefix('/service')
     ->name('service.')
-    ->controller(App\Http\Controllers\serviceController::class)
+    ->controller(App\Http\Controllers\ServiceController::class)
     ->group(function () {
-        Route::get('/service', 'AllServices')->name('all');
         Route::get('/ajout', 'frmService')->name('frm');
         Route::post('/ajout', 'ajoutServices')->name('add');
+        Route::get('/service', 'allServices')->name('all');
     });
 
 
@@ -37,31 +40,43 @@ Route::prefix('/service')
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/accueil', function () {
-    return view('accueil');
-});
+})->name('accueil');
 
-// groupe route de l'inscription du jobworker avec la liste des jobworker 
-// la possibilité de supprimer des jobworkers
 
+// route formulaire inscription
+Route::get('/inscription', [App\Http\Controllers\InscriptionjobworkerController::class, 'frmInscription'])->name('inscription.frm');
+
+
+// groupe route affichage du jobworker avec CRUD
 Route::prefix('/inscription')
     ->name('inscription.')
+    // Utilisez le middleware 'auth' pour restreindre l'accès aux routes authentifiées
     ->controller(App\Http\Controllers\InscriptionjobworkerController::class)
     ->group(function () {
-        Route::get('', 'frmInscription')->name('frm');
-        Route::get('/listejobworker', 'listejobworker')->name('all');
+        Route::get('/listejobworker', 'listejobworker')->name('all')->middleware('auth');
         Route::delete('/delete/{jobworker}', 'delete')->name('delete');
         Route::post('/ajouter', 'ajoutjobworker')->name('add');
+        Route::get('/edit/{id}', 'edit')->name('jobworker.edit');
+        Route::put('/update/{id}', 'update')->name('jobworker.update');
     });
 
 
+// route pour la connexion du jobworker
 Route::prefix('/connexion')
     ->name('connexion.')
-    ->controller(App\Http\Controllers\ConnexionController::class)
+    ->controller(App\Http\Controllers\ConnexionworkerController::class)
     ->group(function () {
-        Route::get('/connexion', 'friendlyConnexion')->name('frc');
-        Route::post('/connexion', 'friendlyConnexion')->name('fcc');
-        Route::get('/connexion', 'workerConnexion')->name('wrc');
-        Route::post('/connexion', 'workerConnexion')->name('wcc');
+        Route::get('/worker', 'frmconnexion')->name('frm');
+        Route::post('/workerr', 'authenticate')->name('connexion');
+        Route::get('/profil', 'workerprofil')->name('profil');
+        Route::post('/deconnexion', 'deconnexion')->name('deconnexion');
     });
+
+// vue pour contact
+Route::get('/contact', function () {
+    return view('contact.contact');
+});
+
+
+// envoyer un email
+Route::post('/envoyer-mail', [MailController::class, 'envoyerMail'])->name('envoyer-mail');

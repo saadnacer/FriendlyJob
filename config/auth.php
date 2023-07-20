@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'jobworker',
+        'passwords' => 'jobworkers',
     ],
 
     /*
@@ -36,9 +36,9 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'jobworker' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'jobworkers',
         ],
     ],
 
@@ -60,9 +60,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'jobworkers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Jobworker::class,
         ],
 
         // 'users' => [
@@ -91,8 +91,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'jobworkers' => [
+            'provider' => 'jobworkers',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 // ajout du dossier et fichier request pour les messages d'erreur 
-// pour l'inscription du jobworker
+// pour l'inscription du service
 
 
 class FormServiceRequest extends FormRequest
@@ -26,9 +26,10 @@ class FormServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'libelle' => ['required', 'min:4', 'regex:/^[a-zA-Z0-9\-]+$/'],
+            'libelle' => ['required', 'min:4', 'regex:/^[^\d]+$/'],
             'prix' => ['required', 'min:1'],
-            'description' => ['required', 'min:4', 'regex:/^[a-zA-Z\-]+$/']
+            'description' => ['required', 'min:4', 'regex:/^[^\d]+$/'],
+            'photo' => ['required', 'image', 'max:2048'],
 
         ];
     }
