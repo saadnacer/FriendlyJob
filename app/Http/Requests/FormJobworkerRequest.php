@@ -31,8 +31,8 @@ class FormJobworkerRequest extends FormRequest
             'email' => ['required', 'min:4', 'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'],
             'pwd' => ['required', 'min:4', 'regex:/^[a-zA-Z0-9!@#$%^&*()\-_=+{}[\]|;:"<>,.?\/`~]+$/'],
             'siret' => ['required', 'min:14'],
-            'activite' => ['required', 'min:4', 'regex:/^[a-zA-Z\-]+$/'],
-            'prix' => ['required', 'min:1']
+            'libelle' => ['required', 'min:4', 'regex:/^[a-zA-Z0-9\s\-]+$/']
+
         ];
     }
 }

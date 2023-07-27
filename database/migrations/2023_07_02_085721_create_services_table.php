@@ -15,7 +15,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('libelle');
             $table->string('description');
-            $table->string('prix');
+            $table->integer('prix');
+            $table->string('photo')->nullable();
+            $table->foreignId('categorie_id')->constrained();
             $table->timestamps();
             
             $table->unsignedBigInteger('image_id')->nullable();;
