@@ -13,11 +13,36 @@ return new class extends Migration
     {
         Schema::create('jobworkers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('description');
-            $table->integer('prix');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('email');
+            $table->string('pwd');
+            $table->string('siret');
+            $table->unsignedBigInteger('categorie_id')->nullable();
+            $table->timestamps();
+
+            $table->unique('siret');
+
+            $table->foreign('categorie_id')->references('id')->on('categories');
+        });
+
+        Schema::create('metiers', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('libelle');
+            $table->timestamps();
+        });
+
+        Schema::create('categories', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('libelle');
             $table->timestamps();
         });
     }
+
+    
+
+
+
 
     /**
      * Reverse the migrations.
@@ -25,5 +50,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('jobworkers');
+        Schema::dropIfExists('metiers');
+        Schema::dropIfExists('categories');
     }
+
+
 };

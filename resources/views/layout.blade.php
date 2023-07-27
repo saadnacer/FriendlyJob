@@ -12,6 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 </head>
 
 <body class="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen flex-grow">
@@ -27,7 +34,7 @@
                     </li>
                     <div class="p-0">
                         <div class="dropdown inline-block relative">
-                            <a href="/service" class="dropdown inline-block relative">
+                            <a href="/service/service" class="dropdown inline-block relative">
                                 <button class="py-2 px-2 rounded inline-flex items-center">
                                     <span class="mr-1">Services</span>
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -56,12 +63,12 @@
                                 </svg>
                             </button>
                             <ul class="dropdown-menu rounded absolute hidden text-white pt-1 bg-black">
-                                <li class=""><a class="font-semibold rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/inscription/">Prestataire</a></li>
+                                <li class=""><a class="font-semibold rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/jobworker/ajouter">Prestataire</a></li>
                                 <li class=""><a class="font-semibold hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/friendlyuser/ajouter">Client</a></li>
                             </ul>
                         </div>
                     </div>
-                    <li><a href="/inscription/listejobworker">Admin</a></li>
+                    <li><a href="/admin/utilisateurs">Admin</a></li>
                     <li>
                         <a class="hover:text-gray-500" href="#">A propos</a>
                     </li>
@@ -71,9 +78,39 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <button class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Sign in</button>
+                @auth('jobworker')
+                <span class="mr-4"> <a href="/service/ajout">{{ auth()->guard('jobworker')->user()->nom }}</a> </span>
+                <form action="{{ route('connexion.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Déconnexion</button>
+                </form>
+                @endauth
+            
+                @auth('friendlyuser')
+                <span class="mr-4"> <a href="/compte/comptefriendlyuser">{{ auth()->guard('friendlyuser')->user()->nom }}</a> </span>
+                <form action="{{ route('connexion.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Déconnexion</button>
+                </form>
+                @endauth
+            
+                @guest
+                <div class="relative">
+                    <button class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec] dropdown-button">
+                        Sign in
+                    </button>
+                    <ul class="absolute left-0 mt-2 bg-white border border-gray-300 rounded-md shadow-md hidden dropdown-list">
+                        <li><a href="/connexion/connexion-friendlyuser" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Connexion Friendlyuser</a></li>
+                        <li><a href="/connexion/connexion-jobworker" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Connexion Jobworker</a></li>
+                    </ul>
+                </div>
+                @endguest
+            
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
+            
+            
+
         </nav>
     </header>
     <section class="h-screen">
@@ -87,7 +124,11 @@
 
 
     <script src="/assets/js/burgermenu.js"></script>
+    <script src="/assets/js/dropdown.js"></script>
     <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/reservation-calendar.js"></script>
+
+
 </body>
 
 </html>

@@ -13,9 +13,36 @@ return [
     |
     */
 
+    // 'defaults' => [
+    //     'guard' => 'jobworker',
+    //     'passwords' => 'jobworkers',
+    //     // 'passwords' => 'users',
+    // ],
+
+    // 'defaults' => [
+    //     'guard' => 'jobworker',
+    //     'passwords' => [
+    //         'jobworkers' => [
+    //             'provider' => 'jobworkers',
+    //             'table' => 'password_reset_tokens',
+    //             'expire' => 60,
+    //             'throttle' => 60,
+    //         ],
+    //         'friendlyusers' => [
+    //             'provider' => 'friendlyusers',
+    //             'table' => 'password_reset_tokens',
+    //             'expire' => 60,
+    //             'throttle' => 60,
+    //         ],
+    //     ],
+    // ],
+
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'friendlyuser',
+        'passwords' => [
+            'jobworkers' => 'jobworkers',
+            'friendlyusers' => 'friendlyusers',
+        ],
     ],
 
     /*
@@ -36,11 +63,18 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'jobworker' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'jobworkers',
         ],
+
+        'friendlyuser' => [
+            'driver' => 'session',
+            'provider' => 'friendlyusers',
+        ],
+
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -60,9 +94,18 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+        'jobworkers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Jobworker::class,
+        ],
+
+        'friendlyusers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Friendlyuser::class,
         ],
 
         // 'users' => [

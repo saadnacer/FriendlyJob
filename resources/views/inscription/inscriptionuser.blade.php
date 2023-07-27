@@ -8,7 +8,7 @@
         <!-- <img class="flex-1 w-full h-full md:h-full object-cover" src="assets/img/logo/logo.png" alt=""> -->
         <div class="p-4 flex-1 md:flex md:flex-col justify-center">
             <h2 class="text-2xl font-bold text-gray-800 mb-2">Inscription friendlyuser</h2>
-            <form action="/friendlyuser/ajouter" method="post">
+            <form action="/friendlyuser/ajouter" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-600" for="nom">Nom</label>
@@ -40,6 +40,13 @@
                     <input type="text" id="confirm_pwd" name="confirm_pwd"
                         class="border border-gray-300 shadow-inner py-2 px-3 text-gray-700 w-full hover:bg-gray-100">
                 </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600" for="image">Image Profile</label>
+                    <input type="file" id="image" name="image" class="border border-gray-300 shadow-inner py-2 px-3 text-gray-700 w-full hover:bg-gray-100">
+                </div>
+                
+                
+
                 <div
                     class="relative mb-3"
                     data-te-datepicker-init

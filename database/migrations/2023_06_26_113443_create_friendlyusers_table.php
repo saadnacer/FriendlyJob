@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('pwd');
             $table->date('date_nais');
             $table->timestamps();
+
+            $table->unsignedBigInteger('image_id')->nullable();;
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 

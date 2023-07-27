@@ -3,52 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\FormJobworkerRequest;
 use App\Models\Jobworker;
-
-// controller de la partit inscription du jobworker 
-// avec toute les methodes qui permette d'ajouter de voir la liste des jobworker
-// et la suppression du jobworker avec la redirection vers les vues associés
+use App\Models\Metier;
+use App\Models\Categorie;
 
 class InscriptionjobworkerController extends Controller
 {
-    public function frmInscription()
+    public function frmJobworker()
     {
-        return view('inscription.inscriptionworker');
+        $categories = Categorie::all();
+        return view('inscription.inscriptionworker', compact('categories'));
     }
 
-
-    public function ajoutjobworker(FormJobworkerRequest $request)
+    public function ajoutJobworker(Request $request)
     {
-        // enregistrer la categorie en BDD
-        $jobworker = \App\Models\Jobworker::create([
-            'nom' => request('nom'),
-            'prenom' => request('prenom'),
-            'email' => request('email'),
-            'pwd' => request('pwd'),
-            'siret' => request('siret'),
-            'activite' => request('activite'),
-            'prix' => request('prix'),
+        // Valider les données du formulaire
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email',
+            'pwd' => 'required',
+            'siret' => 'required',
+            'libelle' => 'required',
+            'categorie_id' => 'required|exists:categories,id',
+        ]);
+
+        // Récupérer la catégorie sélectionnée
+        
+        $categorie = Categorie::findOrFail($validatedData['categorie_id']);
+
+        // Créer le jobworker avec les données du formulaire
+        $jobworker = Jobworker::create([
+            'nom' => $validatedData['nom'],
+            'prenom' => $validatedData['prenom'],
+            'email' => $validatedData['email'],
+            'pwd' => Hash::make($validatedData['pwd']),
+            'siret' => $validatedData['siret'],
+            'categorie_id' => $categorie->id,
 
         ]);
+
+        $metier = Metier::create([
+            'libelle' => $validatedData['libelle'],
+            'categorie_id' => $categorie->id,
+        ]);
+        $jobworker->metiers()->attach($metier->id);
+
+        // Lier la catégorie au jobworker
+        $jobworker->categorie()->associate($categorie);
         $jobworker->save();
 
-        $message = 'vous etes maintenant inscris : ' . $jobworker->nom . ' ' . $jobworker->prenom
-            . ' dans le secteur ' . ' ' . $jobworker->activite;
+        $message = 'Vous êtes maintenant inscrit : ' . $jobworker->nom . ' ' . $jobworker->prenom . ' dans le secteur ';
 
+        return redirect()->route('jobworker.frm')->with('success', $message);
+    }
 
-        return redirect()->route('inscription.frm')->with('success', $message);
-    }
-    public function listejobworker()
-    {
-        $jobworker = \App\Models\Jobworker::all();
-
-        return view('inscription.listejobworker', ['jobworker' => $jobworker]);
-    }
-    public function delete(\App\Models\Jobworker $jobworker)
-    {
-        $jobworker->delete();
-        $message = "la suppression du jobworker {$jobworker->prenom} a etait faite";
-        return redirect()->route('inscription.all')->with('success', $message);
-    }
-}
+    // Autres méthodes du contrôleur
+};
